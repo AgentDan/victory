@@ -29,7 +29,7 @@ const Render3D = () => {
         camera.position.set(15, 5, 15);
         camera.lookAt(new THREE.Vector3());
 
-        const renderer = new THREE.WebGLRenderer({alpha: true});
+        const renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
         renderer.shadowMap.enabled = true;
         renderer.setSize(width, height);
         currentRef.appendChild(renderer.domElement);
