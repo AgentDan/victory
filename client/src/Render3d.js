@@ -9,15 +9,17 @@ import * as dat from 'dat.gui'
 const Render3D = () => {
 
     const mountRef = useRef(null)
-    const path = `./../../../uploads/doorPDraco.gltf`
+    // const path = `./../../../uploads/oakDraco.gltf`
+    const path = `./../../../uploads/doorDraco.gltf`
+    // const path = `./../../../uploads/knobDraco.gltf`
 
     useEffect(() => {
         const currentRef = mountRef.current;
         const gui = new dat.GUI({ width: 400 })
         const sceneParams = {
-            envMapIntensity: 0.38,
-            dlColor: 0xf71257,
-            alColor: 0x1ae2d8,
+            envMapIntensity: 0.38
+            // dlColor: 0xf71257,
+            // alColor: 0x1ae2d8,
         }
 
         const {clientWidth: width, clientHeight: height} = currentRef;
@@ -41,7 +43,6 @@ const Render3D = () => {
         orbitControls.minDistance = 1;
         orbitControls.maxPolarAngle = Math.PI * 0.5;
         orbitControls.minPolarAngle = Math.PI * 0.2;
-
         //Resize canvas
         const resize = () => {
             renderer.setSize(currentRef.clientWidth, currentRef.clientHeight);
@@ -70,7 +71,7 @@ const Render3D = () => {
             .step(0.0001)
             .name("DL Intensity")
 
-        const pointlight = new THREE.PointLight(0xFCFFFA, 5);
+        const pointlight = new THREE.PointLight(0xffffff, 5);
         pointlight.position.set(5, 5, 1);
         scene.add(pointlight);
 
@@ -89,18 +90,18 @@ const Render3D = () => {
             .max(10)
             .step(0.0001)
             .name("Point Light 2")
-
-        const envMap = new THREE.CubeTextureLoader().load(
-            [
-                './envmap/px.png',
-                './envmap/nx.png',
-                './envmap/py.png',
-                './envmap/ny.png',
-                './envmap/pz.png',
-                './envmap/nz.png',
-            ]
-        )
-        scene.environment = envMap
+        //
+        // const envMap = new THREE.CubeTextureLoader().load(
+        //     [
+        //         './envmap/px.png',
+        //         './envmap/nx.png',
+        //         './envmap/py.png',
+        //         './envmap/ny.png',
+        //         './envmap/pz.png',
+        //         './envmap/nz.png',
+        //     ]
+        // )
+        // scene.environment = envMap
         folderLights.add(sceneParams, 'envMapIntensity')
             .min(0)
             .max(20)
